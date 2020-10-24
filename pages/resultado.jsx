@@ -1,5 +1,6 @@
 import React from 'react';
 import { StyleSheet, Button, View, SafeAreaView, TextInput, Alert } from 'react-native';
+import Navbar from '../common/components/navbar';
 
 const Separator = () => (
   <View style={styles.separator} />
@@ -10,6 +11,7 @@ export default function Resultado() {
 
   return (
     <SafeAreaView style={styles.container}>
+      <Navbar></Navbar>
       <View>
         <TextInput
           style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}
