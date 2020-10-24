@@ -1,22 +1,19 @@
-import * as React from 'react';
-import Resultado from './pages/resultado';
+import React from 'react';
+import { StyleSheet, Button, View, SafeAreaView, TextInput, Alert } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import { StyleSheet, Button, View, SafeAreaView, TextInput, Alert } from 'react-native';
-
 
 
 const Separator = () => (
   <View style={styles.separator} />
 );
 
-
-function HomeScreen({ navigation }) {
-     const [value, onChangeText] = React.useState('');
+export default function InitialPage(props) {
+  const [value, onChangeText] = React.useState('');
  
     return (
   <SafeAreaView style={styles.container}>
-    <View style={styles.base}>
+    <View>
     <TextInput
       style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}
       onChangeText={text => onChangeText(text)}
@@ -26,35 +23,15 @@ function HomeScreen({ navigation }) {
       <Button
         title="Press me"
         color="#f194ff"
-        onPress={() => navigation.navigate('Resultado')}
+        onPress={() => props.navigation.navigate('Resultado')}
       />
     </View>
     <Separator />
 
   </SafeAreaView>
-  );
-}
-
-const Stack = createStackNavigator();
-
-function App() {
-  return (
-    <NavigationContainer>
-      <Stack.Navigator initialRouteName="Home">
-        <Stack.Screen name="Home" component={HomeScreen} />
-        <Stack.Screen name="Resultado" component={Resultado} />
-      </Stack.Navigator>
-    </NavigationContainer>
-  );
-}
+)};
 
 const styles = StyleSheet.create({
-  base: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
   container: {
     flex: 1,
     justifyContent: 'center',
@@ -74,5 +51,3 @@ const styles = StyleSheet.create({
     borderBottomWidth: StyleSheet.hairlineWidth,
   },
 });
-
-export default App;
