@@ -1,37 +1,34 @@
 import * as React from 'react';
-import Resultado from './pages/resultado';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import { StyleSheet, Button, View, SafeAreaView, TextInput, Alert } from 'react-native';
-
-
+import { StyleSheet, Button, View, SafeAreaView, TextInput, Text } from 'react-native';
+import Resultado from './pages/resultado';
 
 const Separator = () => (
   <View style={styles.separator} />
 );
 
-
 function HomeScreen({ navigation }) {
-     const [value, onChangeText] = React.useState('');
+  const [value, onChangeText] = React.useState('');
  
-    return (
-  <SafeAreaView style={styles.container}>
-    <View style={styles.base}>
-    <TextInput
-      style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}
-      onChangeText={text => onChangeText(text)}
-      value={value}
-      placeholder='Digite seu ingrediente:'
-      />
-      <Button
-        title="Press me"
-        color="#f194ff"
-        onPress={() => navigation.navigate('Resultado')}
-      />
-    </View>
-    <Separator />
-
-  </SafeAreaView>
+  return (
+    <SafeAreaView style={styles.base}>
+      <View style={styles.container}>
+        <Text style={styles.title}>Flavor Match</Text>
+        <TextInput
+          style={styles.input}
+          onChangeText={text => onChangeText(text)}
+          value={value}
+          placeholder='Digite seu ingrediente:'
+          />
+        <Button
+          title="Press me"
+          color="#f194ff"
+          onPress={() => navigation.navigate('Resultado')}
+        />
+      </View>
+      <Separator />
+    </SafeAreaView>
   );
 }
 
@@ -51,9 +48,7 @@ function App() {
 const styles = StyleSheet.create({
   base: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: '#DFC9E2',
   },
   container: {
     flex: 1,
@@ -64,15 +59,17 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     marginVertical: 8,
   },
-  fixToText: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-  },
   separator: {
     marginVertical: 8,
     borderBottomColor: '#737373',
     borderBottomWidth: StyleSheet.hairlineWidth,
   },
+  input: {
+    height: 40, 
+    borderColor: 'gray', 
+    borderWidth: 1, 
+    marginBottom: '5px'
+  }
 });
 
 export default App;

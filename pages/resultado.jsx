@@ -7,27 +7,24 @@ const Separator = () => (
 
 export default function Resultado() {
   const [value, onChangeText] = React.useState('');
-  const handleClick = () => {
-    
-  }
-    return (
-  <SafeAreaView style={styles.container}>
-    <View>
-    <TextInput
-      style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}
-      onChangeText={text => onChangeText(text)}
-      value={value}
-      placeholder='Mudou:'
-      />
-      <Button
-        title="Press me"
-        color="#f194ff"
-        onPress={() => Alert.alert('Button with adjusted color pressed')}
-      />
-    </View>
-    <Separator />
 
-  </SafeAreaView>
+  return (
+    <SafeAreaView style={styles.container}>
+      <View>
+        <TextInput
+          style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}
+          onChangeText={text => onChangeText(text)}
+          value={value}
+          placeholder='Mudou:'
+        />
+        <Button
+          title="Press me"
+          color="#f194ff"
+          onPress={() => Alert.alert('Button with adjusted color pressed')}
+        />
+      </View>
+      <Separator />
+    </SafeAreaView>
 )};
 
 const styles = StyleSheet.create({
@@ -35,6 +32,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     marginHorizontal: 16,
+    backgroundColor: '#DFC9E2',
   },
   title: {
     textAlign: 'center',
