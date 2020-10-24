@@ -6,9 +6,9 @@ Team Luiza, Dâmaris and Thainá.
 
 # About Techlabs
 
-## ![#00000](https://placehold.it/15/00000/000000?text=+) **`We Build.`**
-## ![#fb1d5c](https://placehold.it/15/#fb1d5c/000000?text=+) **`Digital.`**
-## ![#fb1d5c](https://placehold.it/15/#fb1d5c/000000?text=+) **`Shapers.`**
+## **We Build.**
+## **Digital.**
+## **Shapers.**
 
 Learn Data Science, Artificial Intelligence, Web Development and User Experience Design by means of our pioneering Digital Shaper program that combines online learning, project work as well as community events at one of our locations - and completely free for everyone!
 
