@@ -24,8 +24,9 @@ Learn Data Science, Artificial Intelligence, Web Development and User Experience
 - **ios:** expo start --ios
 - **web:** expo start --web
 
-_use Bundler's QR Code to emulate on a mobile device_
-_expo documentation(https://docs.expo.io)_
+* _use Bundler's QR Code to emulate on a mobile device_
+
+* _expo documentation(https://docs.expo.io)_
 
 # For contribute
 
