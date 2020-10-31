@@ -6,19 +6,17 @@ const Separator = () => (
   <View style={styles.separator} />
 );
 
-export default function Resultado() {
+export default function Opcoes({ navigation }) {
   return (
     <SafeAreaView style={styles.base}>
       <Navbar></Navbar>
       <View style={styles.container}>
-        <Text>Match 1</Text>
+        <Text onPress={() => navigation.navigate('Resultado')}>Opção 1</Text>
         <Separator />
-        <Text>Match 2</Text>
+        <Text onPress={() => navigation.navigate('Resultado')}>Opção 2</Text>
         <Separator />
-        <Text>Match 3</Text>
-        <Separator />
+        <Text onPress={() => navigation.navigate('Resultado')}>Opção 3</Text>
       </View>
-      <Separator />
     </SafeAreaView>
 )};
 
@@ -31,6 +29,14 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     marginHorizontal: 16,
+  },
+  title: {
+    textAlign: 'center',
+    marginVertical: 8,
+  },
+  fixToText: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
   },
   separator: {
     marginVertical: 8,
