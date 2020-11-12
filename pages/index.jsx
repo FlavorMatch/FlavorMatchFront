@@ -2,14 +2,29 @@ import React from 'react';
 import { StyleSheet, TouchableOpacity, Image, View, SafeAreaView, TextInput, Text } from 'react-native';
 import img from '../assets/logo.svg';
 
-
 const Separator = () => (
   <View style={styles.separator} />
 );
 
 export default function HomeScreen({ navigation }) {
   const [value, onChangeText] = React.useState('');
- 
+
+  function getIdByName() {
+    return fetch(`http://localhost:3000/flavorsByName?name=${value}`, {
+      method: 'GET'
+    })
+    .then((response) => response.json())
+    .then((responseJson) => {
+      console.log(responseJson);
+      navigation.navigate('Opcoes', {
+        responseJson
+      })
+    })
+    .catch((error) => {
+        console.error(error);
+    })
+  }
+  
   return (
     <SafeAreaView style={styles.base}>
       <View style={styles.container}>
@@ -27,7 +42,7 @@ export default function HomeScreen({ navigation }) {
         />
         <TouchableOpacity
           style={styles.button}
-          onPress={() => navigation.navigate('Opcoes')}
+          onPress={getIdByName}
         >
           <Text>Press Here</Text>
         </TouchableOpacity>

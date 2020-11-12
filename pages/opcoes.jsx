@@ -1,22 +1,45 @@
 import React from 'react';
-import { StyleSheet, Button, View, SafeAreaView, Text } from 'react-native';
+import { StyleSheet, TouchableOpacity, View, SafeAreaView, Text } from 'react-native';
 import Navbar from '../common/components/navbar';
 
 const Separator = () => (
   <View style={styles.separator} />
 );
 
-export default function Opcoes({ navigation }) {
+export default function Opcoes({ navigation, route}) {
+  const { responseJson } = route.params;
+  console.log(responseJson);
+
+  function getListById(id) {
+    return fetch(`http://localhost:3000/matchById?id=${id}`, {
+      method: 'GET'
+    })
+    .then((response) => response.json())
+    .then((responseJson) => {
+      console.log(responseJson);
+      navigation.navigate('Resultado', {
+        responseJson
+      })
+    })
+    .catch((error) => {
+        console.error(error);
+    })
+  }
+  
   return (
     <SafeAreaView style={styles.base}>
       <Navbar></Navbar>
-      <View style={styles.container}>
-        <Text onPress={() => navigation.navigate('Resultado')}>Opção 1</Text>
-        <Separator />
-        <Text onPress={() => navigation.navigate('Resultado')}>Opção 2</Text>
-        <Separator />
-        <Text onPress={() => navigation.navigate('Resultado')}>Opção 3</Text>
-      </View>
+      {responseJson.map((flavor, index) => (
+        <View style={styles.container} key={index}>
+          <TouchableOpacity
+            style={styles.button}
+            onPress={() => getListById(flavor.id)}
+          >
+            <Text >{flavor.name}</Text>
+          </TouchableOpacity>
+          <Separator />
+        </View>
+      ))}
     </SafeAreaView>
 )};
 
@@ -26,7 +49,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#A2EEEB',
   },
   container: {
-    flex: 1,
     justifyContent: 'center',
     marginHorizontal: 16,
   },

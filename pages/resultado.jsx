@@ -6,19 +6,18 @@ const Separator = () => (
   <View style={styles.separator} />
 );
 
-export default function Resultado() {
+export default function Opcoes({ route}) {
+  const { responseJson } = route.params;
+
   return (
     <SafeAreaView style={styles.base}>
       <Navbar></Navbar>
-      <View style={styles.container}>
-        <Text>Match 1</Text>
-        <Separator />
-        <Text>Match 2</Text>
-        <Separator />
-        <Text>Match 3</Text>
-        <Separator />
-      </View>
-      <Separator />
+      {responseJson.map((flavor, index) => (
+        <View style={styles.container} key={index}>
+          <Text>{flavor.name}</Text>
+          <Separator />
+        </View>
+      ))}
     </SafeAreaView>
 )};
 
@@ -28,7 +27,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#A2EEEB',
   },
   container: {
-    flex: 1,
     justifyContent: 'center',
     marginHorizontal: 16,
   },
