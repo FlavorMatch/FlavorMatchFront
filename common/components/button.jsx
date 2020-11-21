@@ -1,13 +1,13 @@
 import React from 'react';
-import { StyleSheet, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity } from 'react-native';
 
-const Button = ({onPress, children}) => {
+const Button = ({onPress, children, style}) => {
     return (
     <TouchableOpacity
-        style={styles.button}
+        style={style != null ? style : styles.button}
         onPress={onPress}
     >
-        {children}
+        <Text style={styles.text}>{children}</Text>
     </TouchableOpacity>
 )};
 
@@ -24,5 +24,10 @@ const styles = StyleSheet.create({
       borderRadius: '5px',
       marginHorizontal: '115px',
       marginVertical: '10px',
-    },
+    }, 
+    text: {
+      fontSize: 16,
+      color: '#FFBD59',
+      fontFamily: "Purisa"
+    }
 });
