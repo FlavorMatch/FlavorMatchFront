@@ -1,6 +1,8 @@
 import React from 'react';
-import { StyleSheet, TouchableOpacity, View, SafeAreaView, Text } from 'react-native';
+import { StyleSheet, TouchableOpacity, ImageBackground, View, SafeAreaView, Text } from 'react-native';
+import 'react-navigation';
 import Navbar from '../common/components/navbar';
+import imgBG from '../assets/bg.png';
 
 const Separator = () => (
   <View style={styles.separator} />
@@ -8,17 +10,16 @@ const Separator = () => (
 
 export default function Opcoes({ navigation, route}) {
   const { responseJson } = route.params;
-  console.log(responseJson);
 
-  function getListById(id) {
+  function getListById(id, name) {
     return fetch(`http://localhost:3000/matchById?id=${id}`, {
       method: 'GET'
     })
     .then((response) => response.json())
     .then((responseJson) => {
-      console.log(responseJson);
       navigation.navigate('Resultado', {
-        responseJson
+        responseJson,
+        name
       })
     })
     .catch((error) => {
@@ -28,41 +29,52 @@ export default function Opcoes({ navigation, route}) {
   
   return (
     <SafeAreaView style={styles.base}>
-      <Navbar></Navbar>
-      {responseJson.map((flavor, index) => (
-        <View style={styles.container} key={index}>
-          <TouchableOpacity
-            style={styles.button}
-            onPress={() => getListById(flavor.id)}
-          >
-            <Text >{flavor.name}</Text>
-          </TouchableOpacity>
-          <Separator />
-        </View>
-      ))}
+      <Navbar navigation={navigation} />
+      <ImageBackground
+          style={styles.backgroundImage}
+          source={imgBG}
+      >
+        <Text style={styles.text}>Choose the best ingredient</Text>
+        {responseJson.map((flavor, index) => (
+          <View style={styles.container} key={index}>
+            <TouchableOpacity
+              style={styles.button}
+              onPress={() => getListById(flavor.id, flavor.name)}
+            >
+              <Text style={styles.text}>{index + 1}) <u>{flavor.name}</u></Text>
+            </TouchableOpacity>
+            <Separator />
+          </View>
+        ))}
+      </ImageBackground>
     </SafeAreaView>
 )};
 
 const styles = StyleSheet.create({
   base: {
     flex: 1,
-    backgroundColor: '#A2EEEB',
+    backgroundColor: '#c8b9a8',
   },
   container: {
     justifyContent: 'center',
     marginHorizontal: 16,
   },
-  title: {
+  text: {
+    marginVertical: 20,
     textAlign: 'center',
-    marginVertical: 8,
+    fontSize: 16,
+    fontWeight: 'bold',
+    color: '#AF660D',
+    fontFamily: "Purisa",
   },
-  fixToText: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
+  backgroundImage: {
+    flex: 1,
+    width: null,
+    height: null,
   },
   separator: {
     marginVertical: 8,
-    borderBottomColor: '#737373',
+    borderBottomColor: '#e4cea9',
     borderBottomWidth: StyleSheet.hairlineWidth,
   },
 });
