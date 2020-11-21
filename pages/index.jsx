@@ -46,7 +46,7 @@ export default function HomeScreen({ navigation }) {
           <Button
             onPress={getIdByName}
           >
-            <Text style={styles.text}>Search</Text>
+            Search
           </Button>
         </ImageBackground>
       </View>
@@ -75,10 +75,5 @@ const styles = StyleSheet.create({
   logo: {
     width: 250,
     height: 250,
-  }, 
-  text: {
-    fontSize: 16,
-    color: '#FFBD59',
-    fontFamily: "Purisa"
   }
 });
