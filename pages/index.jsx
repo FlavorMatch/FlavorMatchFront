@@ -9,7 +9,7 @@ export default function HomeScreen({ navigation }) {
   const [value, onChangeText] = React.useState('');
 
   function getIdByName() {
-    return fetch(`http://localhost:3000/flavorsByName?name=${value}`, {
+    return fetch(`https://flavormatch.herokuapp.com/flavorsByName?name=${value}`, {
       method: 'GET'
     })
     .then((response) => response.json())
@@ -18,6 +18,7 @@ export default function HomeScreen({ navigation }) {
       navigation.navigate('Opcoes', {
         responseJson
       })
+      onChangeText('');
     })
     .catch((error) => {
         console.error(error);

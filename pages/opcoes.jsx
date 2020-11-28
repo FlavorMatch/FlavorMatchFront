@@ -12,7 +12,7 @@ export default function Opcoes({ navigation, route}) {
   const { responseJson } = route.params;
 
   function getListById(id, name) {
-    return fetch(`http://localhost:3000/matchById?id=${id}`, {
+    return fetch(`https://flavormatch.herokuapp.com/matchById?id=${id}`, {
       method: 'GET'
     })
     .then((response) => response.json())
