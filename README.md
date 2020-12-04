@@ -2,7 +2,7 @@
 
 Completion project of the web development trail, from techlabs **(https://www.techlabs.org)**
 
-Team Luiza, Dâmaris and Thainá.
+Team Luiza Sanchotene and Thainá Biudes.
 
 # About Techlabs
 
@@ -12,13 +12,16 @@ Team Luiza, Dâmaris and Thainá.
 
 Learn Data Science, Artificial Intelligence, Web Development and User Experience Design by means of our pioneering Digital Shaper program that combines online learning, project work as well as community events at one of our locations - and completely free for everyone!
 
+# For download CLI 
+
+- **expo:** npm install --global expo-cli
+
 # For install dependecies
 
 - **npm:** npm i
 
 # For execute
 
-- **expo:** npm install --global expo-cli
 - **start:** expo start
 - **android:** expo start --android
 - **ios:** expo start --ios
@@ -26,6 +29,10 @@ Learn Data Science, Artificial Intelligence, Web Development and User Experience
 
 * _use Bundler's QR Code to emulate on a mobile device_
 * _expo documentation(https://docs.expo.io)_
+
+# For deploy
+
+- **android:** expo build:android -t apk
 
 # For contribute
 
