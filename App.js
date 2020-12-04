@@ -4,6 +4,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import Resultado from './pages/resultado';
 import HomeScreen from './pages';
 import Opcoes from './pages/opcoes';
+import GenericError from './pages/genericError';
 
 const Stack = createStackNavigator();
 
@@ -51,6 +52,16 @@ function App() {
         <Stack.Screen 
           name="Opcoes" 
           component={Opcoes} 
+          options={{
+            transitionSpec: {
+              open: config,
+              close: config,
+            },
+          }}  
+        />
+        <Stack.Screen 
+          name="GenericError" 
+          component={GenericError} 
           options={{
             transitionSpec: {
               open: config,
