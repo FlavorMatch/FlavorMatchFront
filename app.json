@@ -8,7 +8,7 @@
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#F8D38B"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
@@ -18,6 +18,10 @@
     ],
     "ios": {
       "supportsTablet": true
+    },
+    "android": {
+      "package": "com.techlabs.flavormatch",
+      "versionCode": 1
     },
     "web": {
       "favicon": "./assets/favicon.png"
