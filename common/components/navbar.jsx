@@ -1,19 +1,9 @@
 import React from 'react';
-import styled from 'styled-components';
 import Input from './input';
 import Button from './button';
 import img from '../../assets/logo_img.png';
-import { StyleSheet, Image, TouchableOpacity } from 'react-native';
+import { StyleSheet, View, Text, Image, TouchableOpacity } from 'react-native';
 
-const Container = styled.div`
-  background: #e4cea9;
-  padding: 6px; 
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 5px solid #AF660D;
-  border-bottom-style: double;
-`
 function Navbar({ navigation }) {
   const [value, onChangeText] = React.useState('');
 
@@ -23,19 +13,17 @@ function Navbar({ navigation }) {
     })
     .then((response) => response.json())
     .then((responseJson) => {
-      console.log(responseJson);
       navigation.navigate('Opcoes', {
         responseJson
       })
       onChangeText('');
     })
     .catch((error) => {
-        console.error(error);
     })
   }
 
   return (
-    <Container>
+    <View style={styles.base}>
       <TouchableOpacity onPress={() => navigation.navigate('Home')} style={styles.wrapper}>
         <Image
           style={styles.logo}
@@ -49,31 +37,42 @@ function Navbar({ navigation }) {
           placeholder='Type here to search:'
           placeholderTextColor="#AF660D" 
       />
-      <Button style={styles.button} onPress={getIdByName}>Go</Button>
-    </Container>
+      <Button style={styles.button} onPress={getIdByName}><Text>Go</Text></Button>
+    </View>
   )
 };
 
 const styles = StyleSheet.create({
+  base:{
+    backgroundColor: '#e4cea9',
+    padding: 6,
+    paddingTop: 20,
+    paddingBottom: 10,
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    borderColor: '#AF660D',
+    borderStyle: 'dashed',
+    borderWidth: 2,
+    borderRadius: 1,
+  },
   button: {
-    padding: '5px',
+    padding: 5,
     alignItems: "center",
     justifyContent: "center",
-    boxShadow: '0px 2px 2px #816a5b',
     backgroundColor: "#AF660D",
     height: 25,
-    borderRadius: '5px',
+    borderRadius: 5,
   },
   input: {
-    width: '100vh',
-    marginRight: '10px',
+    width: '75%',
+    marginRight: 10,
     height: 25, 
-    paddingLeft: '7px',
-    boxShadow: '0px 2px 2px #816a5b',
-    borderRadius: '5px',
+    paddingLeft: 7,
+    borderRadius: 5,
     backgroundColor: '#FFBD59',
     fontSize: 12,
-    fontFamily: "Purisa",
     color: '#AF660D',
   },
   wrapper: {
@@ -83,8 +82,8 @@ const styles = StyleSheet.create({
   logo: {
     width: 35,
     height: 35,
-    marginRight: '15px',
-    marginLeft: '5px',
+    marginRight: 15,
+    marginLeft: 5,
   }
 });
 

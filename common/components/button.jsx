@@ -17,17 +17,15 @@ const styles = StyleSheet.create({
     button: {
       alignItems: "center",
       justifyContent: "center",
-      boxShadow: '0px 2px 2px #A99CC8',
       backgroundColor: "#AF660D",
       padding: 10,
       height: 40,
-      borderRadius: '5px',
-      marginHorizontal: '115px',
-      marginVertical: '10px',
+      borderRadius: 5,
+      marginHorizontal: 115,
+      marginVertical: 10,
     }, 
     text: {
       fontSize: 16,
       color: '#FFBD59',
-      fontFamily: "Purisa"
     }
 });
