@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import 'react-navigation';
-import { StyleSheet, Image, View, SafeAreaView, Text } from 'react-native';
+import { StyleSheet, Image, View, ScrollView, SafeAreaView, Text } from 'react-native';
 import Navbar from '../common/components/navbar';
 
 const Separator = () => (
@@ -9,7 +9,7 @@ const Separator = () => (
 
 export default function Opcoes({ route, navigation }) {
   const { responseJson } = route.params;
-  const [imageApi, setImageApi] = React.useState([]);
+  const [imageApi, setImageApi] = React.useState(null);
 
   async function fetchImage(){
     try {
@@ -17,7 +17,6 @@ export default function Opcoes({ route, navigation }) {
       const res = await resJson.json();
       setImageApi(res.hits[0].previewURL);
     } catch (error) {
-      console.warn(error);
     }
   }
 
@@ -28,19 +27,21 @@ export default function Opcoes({ route, navigation }) {
   return (
     <SafeAreaView style={styles.base}>
       <Navbar navigation={navigation} /> 
-      <View style={styles.wrapper}>   
-        <Image
-          resizeMode={"cover"}
-          style={styles.image}
-          source={{uri: imageApi}}
-        />
-      </View>
-      {responseJson.map((flavor, index) => (
-        <View style={styles.container} key={index}>
-          <Text style={styles.text}>{flavor.name}</Text>
-          <Separator />
+      <ScrollView>
+        <View style={styles.wrapper}>   
+          <Image
+            resizeMode={"cover"}
+            style={styles.image}
+            source={{uri: imageApi}}
+          />
         </View>
-      ))}
+        {responseJson.map((flavor, index) =>  (
+          <View style={styles.container} key={index}>
+            <Text style={styles.text}>{flavor.name}</Text>
+            <Separator />
+          </View>
+        ))}
+      </ScrollView>
     </SafeAreaView>
 )};
 
@@ -62,20 +63,19 @@ const styles = StyleSheet.create({
     width: 150,
     height: 150,    
     marginBottom: 5,
-    marginTop: '20px',
-    borderRadius: '50%',
+    marginTop: 20,
+    borderRadius: 50,
   },
   wrapper: {
     alignItems: 'center',
     justifyContent: 'center',
-    borderRadius: '50%'
+    borderRadius: 50
   },
   text: {
     marginVertical: 20,
     fontSize: 16,
     fontWeight: 'bold',
     color: '#AF660D',
-    fontFamily: "Purisa",
     textAlign: 'center',
   },
 });

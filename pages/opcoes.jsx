@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, TouchableOpacity, ImageBackground, View, SafeAreaView, Text } from 'react-native';
+import { StyleSheet, TouchableOpacity, ScrollView, ImageBackground, View, SafeAreaView, Text } from 'react-native';
 import 'react-navigation';
 import Navbar from '../common/components/navbar';
 import imgBG from '../assets/bg.png';
@@ -23,7 +23,9 @@ export default function Opcoes({ navigation, route}) {
       })
     })
     .catch((error) => {
-        console.error(error);
+      navigation.navigate('GenericError', {
+        error
+      })
     })
   }
   
@@ -33,19 +35,21 @@ export default function Opcoes({ navigation, route}) {
       <ImageBackground
           style={styles.backgroundImage}
           source={imgBG}
-      >
-        <Text style={styles.text}>Choose the best ingredient</Text>
-        {responseJson.map((flavor, index) => (
-          <View style={styles.container} key={index}>
-            <TouchableOpacity
-              style={styles.button}
-              onPress={() => getListById(flavor.id, flavor.name)}
-            >
-              <Text style={styles.text}>{index + 1}) <u>{flavor.name}</u></Text>
-            </TouchableOpacity>
-            <Separator />
-          </View>
-        ))}
+          >
+          <ScrollView>
+          <Text style={styles.text}>Choose the best ingredient</Text>
+          {responseJson.map((flavor, index) => (
+            <View style={styles.container} key={index}>
+              <TouchableOpacity
+                style={styles.button}
+                onPress={() => getListById(flavor.id, flavor.name)}
+              >
+                <Text style={styles.text}>{index + 1}) {flavor.name}</Text>
+              </TouchableOpacity>
+              <Separator />
+            </View>
+          ))}
+        </ScrollView>
       </ImageBackground>
     </SafeAreaView>
 )};
@@ -65,7 +69,6 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: 'bold',
     color: '#AF660D',
-    fontFamily: "Purisa",
   },
   backgroundImage: {
     flex: 1,
