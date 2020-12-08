@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import Resultado from './pages/resultado';
+import Result from './pages/result';
 import HomeScreen from './pages';
-import Opcoes from './pages/opcoes';
+import Options from './pages/options';
 import GenericError from './pages/genericError';
 
 const Stack = createStackNavigator();
@@ -40,8 +40,8 @@ function App() {
           }}
         />
         <Stack.Screen 
-          name="Resultado" 
-          component={Resultado} 
+          name="Result" 
+          component={Result} 
           options={{
             transitionSpec: {
               open: config,
@@ -50,8 +50,8 @@ function App() {
           }}  
         />
         <Stack.Screen 
-          name="Opcoes" 
-          component={Opcoes} 
+          name="Options" 
+          component={Options} 
           options={{
             transitionSpec: {
               open: config,

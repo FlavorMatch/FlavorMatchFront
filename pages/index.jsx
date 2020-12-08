@@ -16,7 +16,7 @@ export default function HomeScreen({ navigation }) {
     .then((response) => response.json())
     .then((responseJson) => {
       if(responseJson.length){
-        navigation.navigate('Opcoes', {
+        navigation.navigate('Options', {
           responseJson
         })
       } else {
@@ -33,7 +33,7 @@ export default function HomeScreen({ navigation }) {
   
   useEffect(() => {
     if(!showAlert){
-      let timer = setInterval(() => setShowAlert(false), 3000);
+      let timer = setInterval(() => setShowAlert(false), 5000);
 
       return () => clearInterval(timer)
     }

@@ -4,7 +4,7 @@ import { StyleSheet, View, Image, ScrollView, SafeAreaView, Text } from 'react-n
 import Navbar from '../common/components/navbar';
 import img from '../assets/warning.png';
 
-export default function GenericError({ navigation, route}) {
+export default function GenericError({ navigation }) {
 
   return (
     <SafeAreaView style={styles.base}>
