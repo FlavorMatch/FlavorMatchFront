@@ -13,7 +13,7 @@ function Navbar({ navigation }) {
     })
     .then((response) => response.json())
     .then((responseJson) => {
-      navigation.navigate('Opcoes', {
+      navigation.navigate('Options', {
         responseJson
       })
       onChangeText('');

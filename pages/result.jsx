@@ -7,7 +7,7 @@ const Separator = () => (
   <View style={styles.separator} />
 );
 
-export default function Opcoes({ route, navigation }) {
+export default function Options({ route, navigation }) {
   const { responseJson } = route.params;
   const [imageApi, setImageApi] = React.useState(null);
 
@@ -35,6 +35,7 @@ export default function Opcoes({ route, navigation }) {
             source={{uri: imageApi}}
           />
         </View>
+        <Text style={styles.text}>Top Flavor Matches:</Text>
         {responseJson.map((flavor, index) =>  (
           <View style={styles.container} key={index}>
             <Text style={styles.text}>{flavor.name}</Text>

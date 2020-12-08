@@ -8,7 +8,7 @@ const Separator = () => (
   <View style={styles.separator} />
 );
 
-export default function Opcoes({ navigation, route}) {
+export default function Options({ navigation, route}) {
   const { responseJson } = route.params;
 
   function getListById(id, name) {
@@ -17,7 +17,7 @@ export default function Opcoes({ navigation, route}) {
     })
     .then((response) => response.json())
     .then((responseJson) => {
-      navigation.navigate('Resultado', {
+      navigation.navigate('Result', {
         responseJson,
         name
       })
